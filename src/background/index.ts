@@ -10,32 +10,44 @@ const fetchMessages = async (): Promise<Message[]> => {
   return response.json();
 };
 
-const checkForNewMessages = async () => {
+const updateUnreadCount = (messages: Message[]): void => {
+  const unreadCount = messages.filter((m: Message) => !m.read).length;
+  chrome.action.setBadgeText({ text: unreadCount.toString() });
+};
+
+const mergeMessages = (
+  fetchedMessages: Message[],
+  storedMessages: Message[]
+): Message[] =>
+  fetchedMessages.map((fetchedMsg) => ({
+    ...fetchedMsg,
+    read:
+      storedMessages.find((m) => m.id === fetchedMsg.id)?.read ??
+      fetchedMsg.read,
+  }));
+
+const syncMessages = async (): Promise<void> => {
   try {
-    const messages = await fetchMessages();
-    const storedMessages = await chrome.storage.local.get("messages");
-    const newMessages = messages.filter(
-      (message: Message) =>
-        !storedMessages.messages?.some((m: Message) => m.id === message.id)
+    const fetchedMessages = await fetchMessages();
+    const { messages: storedMessages = [] } = await chrome.storage.local.get(
+      "messages"
     );
 
-    if (newMessages.length > 0) {
-      await chrome.storage.local.set({
-        messages: [...newMessages, ...(storedMessages.messages || [])],
-      });
-      chrome.action.setBadgeText({ text: newMessages.length.toString() });
-    }
+    const updatedMessages = mergeMessages(fetchedMessages, storedMessages);
+
+    await chrome.storage.local.set({ messages: updatedMessages });
+    updateUnreadCount(updatedMessages);
   } catch (error) {
-    console.error("Error checking for new messages:", error);
+    console.error("Error syncing messages:", error);
   }
 };
 
-chrome.alarms.create("checkMessages", { periodInMinutes: 1 });
+chrome.alarms.create("syncMessages", { periodInMinutes: 1 });
 
-chrome.alarms.onAlarm.addListener((alarm) => {
-  if (alarm.name === "checkMessages") {
-    checkForNewMessages();
+chrome.alarms.onAlarm.addListener(({ name }) => {
+  if (name === "syncMessages") {
+    syncMessages();
   }
 });
 
-checkForNewMessages();
+syncMessages();

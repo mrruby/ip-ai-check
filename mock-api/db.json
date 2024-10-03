@@ -41,6 +41,20 @@
       "priority": "low",
       "timestamp": "2024-10-01T11:00:00Z",
       "read": false
+    },
+    {
+      "id": "msg129",
+      "content": "Quarterly performance reviews start next week",
+      "priority": "high",
+      "timestamp": "2024-10-02T09:30:00Z",
+      "read": false
+    },
+    {
+      "id": "msg130",
+      "content": "New client onboarding session scheduled for Thursday",
+      "priority": "medium",
+      "timestamp": "2024-10-03T14:00:00Z",
+      "read": false
     }
   ]
 }

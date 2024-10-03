@@ -67,6 +67,6 @@ This project is a Chrome extension built with React and TypeScript.
 
 Check out this demo video to see the Admin Messages Chrome extension in action:
 
-[![Admin Messages Chrome Extension Demo](https://cdn.loom.com/sessions/thumbnails/a3b544b81147492185d39c423cbade43-with-play.gif)](https://www.loom.com/share/a3b544b81147492185d39c423cbade43?sid=60588c47-085f-4ab2-ae79-4d0ded30420c)
+[![Demo Video](https://cdn.loom.com/sessions/thumbnails/a3b544b81147492185d39c423cbade43-aeb16308532bf3fe-full-play.gif)](https://www.loom.com/share/a3b544b81147492185d39c423cbade43)
 
 This video provides a walkthrough of the extension's features and functionality.

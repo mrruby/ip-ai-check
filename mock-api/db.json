@@ -55,6 +55,13 @@
       "priority": "medium",
       "timestamp": "2024-10-03T14:00:00Z",
       "read": false
+    },
+    {
+      "id": "msg131",
+      "content": "New client onboarding session scheduled for Thursday",
+      "priority": "medium",
+      "timestamp": "2024-10-03T14:00:00Z",
+      "read": false
     }
   ]
 }

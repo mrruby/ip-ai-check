@@ -11,19 +11,25 @@ const Popup: React.FC = () => {
   );
 
   useEffect(() => {
-    getMessages();
+    const handleResponse = (response: any) => {
+      if (chrome.runtime.lastError || !response?.success) {
+        console.error("Runtime error:", chrome.runtime.lastError?.message);
+        return setStatus("error");
+      }
+      getMessages();
+      setStatus("success");
+    };
+
+    setStatus("loading");
+    chrome.runtime.sendMessage({ action: "popupOpened" }, handleResponse);
   }, []);
 
   const getMessages = async () => {
     try {
-      setStatus("loading");
       const storedMessages = await chrome.storage.local.get("messages");
       if (storedMessages.messages) {
         setMessages(storedMessages.messages);
-        setStatus("success");
         updateUnreadCount(storedMessages.messages);
-      } else {
-        setStatus("error");
       }
     } catch (error) {
       console.error("Error fetching messages:", error);

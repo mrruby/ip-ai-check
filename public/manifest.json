@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Messages Extension",
-  "version": "0.0.1",
-  "description": "A Chrome extension to see messages from your friends",
+  "name": "Admin Messages",
+  "version": "1.0.0",
+  "description": "A Chrome extension to display messages from your organization's admin",
   "action": {
     "default_popup": "src/popup/index.html",
     "default_icon": {

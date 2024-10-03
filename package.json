@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "mock-api": "json-server --watch mock-api/db.json --port 3001"
+    "mock-api": "json-server --watch mock-api/db.json --port 3001 --delay 4000"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^1.0.14",

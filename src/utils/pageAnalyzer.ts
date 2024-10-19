@@ -10,13 +10,14 @@ const llm = new ChatOpenAI({
 
 const prompt = ChatPromptTemplate.fromMessages([
   ["system", analyzerPrompt],
-  ["human", "{content}"],
+  ["human", "Analyze the following page content: {content}"],
 ]);
 
 const chain = prompt.pipe(llm);
 
+
 export async function analyzePageSecurity(content: string): Promise<string> {
-  console.log("Analyzing page security...");
+  console.log("Analyzing page security...");  
   console.log("Content:", content);
 
   const response = await chain.invoke({ content });

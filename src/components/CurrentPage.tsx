@@ -152,7 +152,7 @@ const CurrentPage: React.FC<CurrentPageProps> = ({ pageContent }) => {
                       : "bg-red-200 text-red-800"
                   }`}
                 >
-                  {contentAnalysis.security_score}/6
+                  {contentAnalysis.security_score}/10
                 </span>
               </p>
               <p className="mt-4 text-gray-600">

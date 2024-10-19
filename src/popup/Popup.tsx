@@ -28,7 +28,7 @@ const Popup: React.FC = () => {
     <div className="bg-gray-100 min-h-screen">
       <div className="container mx-auto p-6">
         <h1 className="text-3xl font-bold mb-6 text-indigo-700">
-          AI scrapping assistant
+          ALL RIGHTS RESERVED
         </h1>
 
         <CurrentPage pageContent={pageContent} />
@@ -38,7 +38,7 @@ const Popup: React.FC = () => {
           className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
           onClick={generatePDFReport}
         >
-          Generate PDF
+          Generuj PDF
         </button>
       </div>
     </div>

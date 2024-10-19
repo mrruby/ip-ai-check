@@ -8,12 +8,12 @@ interface RobotsAnalysisProps {
 const RobotsAnalysis: React.FC<RobotsAnalysisProps> = ({ robotsResult }) => (
   <div className="bg-white rounded-lg shadow-md p-6 mb-6">
     <h2 className="text-2xl font-semibold mb-4 text-indigo-600">
-      Robots.txt Analysis
+      Analiza pliku Robots.txt
     </h2>
     {robotsResult ? (
       <div className="mb-4">
         <p className="mb-2">
-          <span className="font-medium">Is bot allowed:</span>
+          <span className="font-medium">Czy bot jest dozwolony:</span>
           <span
             className={`ml-2 px-2 py-1 rounded ${
               robotsResult.isAllowed
@@ -21,39 +21,43 @@ const RobotsAnalysis: React.FC<RobotsAnalysisProps> = ({ robotsResult }) => (
                 : "bg-red-200 text-red-800"
             }`}
           >
-            {robotsResult.isAllowed ? "Yes" : "No"}
+            {robotsResult.isAllowed ? "Tak" : "Nie"}
           </span>
         </p>
         <p className="mb-2">
-          <span className="font-medium">Number of rules:</span>{" "}
+          <span className="font-medium">Liczba reguł:</span>{" "}
           {robotsResult.parsedRobots.rules.length}
         </p>
         <p className="mb-4">
-          <span className="font-medium">Number of sitemaps:</span>{" "}
+          <span className="font-medium">Liczba map witryn:</span>{" "}
           {robotsResult.parsedRobots.sitemaps.length}
         </p>
-        {robotsResult.parsedRobots.rules.length > 0 ? <h3 className="font-medium text-lg mb-2 text-indigo-600">Rules:</h3>: null}
+        {robotsResult.parsedRobots.rules.length > 0 ? (
+          <h3 className="font-medium text-lg mb-2 text-indigo-600">Reguły:</h3>
+        ) : null}
         <ul className="space-y-4">
           {robotsResult.parsedRobots.rules.map((rule, index) => (
             <li key={index} className="bg-gray-50 p-4 rounded-md">
               <p className="mb-1">
-                <span className="font-medium">User Agent:</span>{" "}
+                <span className="font-medium">Agent użytkownika:</span>{" "}
                 {rule.userAgent}
               </p>
               <p className="mb-1">
-                <span className="font-medium">Disallows:</span>{" "}
-                {rule.disallows.join(", ") || "None"}
+                <span className="font-medium">Zabronione:</span>{" "}
+                {rule.disallows.join(", ") || "Brak"}
               </p>
               <p>
-                <span className="font-medium">Allows:</span>{" "}
-                {rule.allows.join(", ") || "None"}
+                <span className="font-medium">Dozwolone:</span>{" "}
+                {rule.allows.join(", ") || "Brak"}
               </p>
             </li>
           ))}
         </ul>
       </div>
     ) : (
-      <p className="text-gray-500 italic">Loading robots.txt analysis...</p>
+      <p className="text-gray-500 italic">
+        Ładowanie analizy pliku robots.txt...
+      </p>
     )}
   </div>
 );

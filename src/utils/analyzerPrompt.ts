@@ -25,22 +25,19 @@ Analyze the following web page content and provide a summary of the compliance r
 
 
 ### JSON Format template:
+  {{
+    "copyright_reservation": "yes or no",
+    "opt_out_of_copyright_exception": "yes or no",
+    "prohibited_type_of_use": "yes or no",
+    "prohibited_purpose": "yes or no",
+    "directive_reference": "yes or no",
+    "contact_inquiries_reference": "either include extracted email or no",
+    "security_score": 1-10 based on fulfilled criteria,
+    "comments": "Any relevant comments to explain the selected score in one sentence.",
+    "overall_security_assessment": "Your conclusion in one sentence."
+  }}
 
-{{
-  "copyright_reservation": "yes or no",
-  "opt_out_of_copyright_exception": "yes or no",
-  "prohibited_type_of_use": "yes or no",
-  "prohibited_purpose": "yes or no",
-  "directive_reference": "yes or no",
-  "contact_inquiries_reference": "either include extracted email or no",
-  "security_score": 1-10 based on fulfilled criteria,
-  "comments": "Any relevant comments to explain the selected score in one sentence.",
-  "overall_security_assessment": "Your conclusion in one sentence."
-}}
-
-Return only the JSON object with no markdown, text, or any other formatting around it.
-
-
+Return only the JSON object (translate values to Polish language) with no markdown, text, or any other formatting around it.
 `;
 
 export default analyzerPrompt;

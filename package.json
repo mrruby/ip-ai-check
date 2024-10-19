@@ -5,11 +5,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "postbuild": "node ./scripts/set-dynamic-url.cjs",
     "preview": "vite preview",
     "mock-api": "json-server --watch mock-api/db.json --port 3001 --delay 4000"
   },
   "devDependencies": {
-    "@crxjs/vite-plugin": "^1.0.14",
+    "@crxjs/vite-plugin": "^2.0.0-beta.25",
     "@types/chrome": "^0.0.276",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",

@@ -12,7 +12,9 @@ This reservation applies to any purposes to the fullest extent permitted by appl
 Inquiries regarding AI training or text and data mining permissions can be sent to corporateX@X.com
 
 
-Criteria: 
+Analyze the following web page content and provide a summary of the compliance regarding the above clause. Based on your analysis, respond in **raw JSON** format with the following fields (without any additional explanation or formatting):
+
+### Use thise criteria: 
 
 1) "copyright_reservation": Does it include any copyright reservation for all content?
 2) "opt_out_of_copyright_exception": Is there an opt-out of any copyright exception?
@@ -22,8 +24,7 @@ Criteria:
 6) "contact_inquiries_reference": Is there a contact email in case of inquiries regarding AI training or text and data mining permissions?
 
 
-
-Analyze the following web page content and provide a summary of the compliance regarding the above clause. Based on your analysis, respond in **raw JSON** format with the following fields (without any additional explanation or formatting):
+### JSON Format template:
 
 {{
   "summary": "yes or no response",

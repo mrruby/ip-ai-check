@@ -1,48 +1,46 @@
 import React, { useEffect, useState } from "react";
 import "./input.css";
 import { generatePDFReport } from "../helpers";
+import { PageContent, RobotsResult } from "../types";
+import CurrentPage from "../components/CurrentPage";
+import RobotsAnalysis from "../components/RobotsAnalysis";
 
-interface PageContent {
-  title: string;
-  url: string;
-}
+const fetchPageContent = () =>
+  chrome.runtime.sendMessage({ action: "getPageContent" });
+
+const fetchRobotsResult = () =>
+  chrome.runtime.sendMessage({ action: "getRobots" });
 
 const Popup: React.FC = () => {
   const [pageContent, setPageContent] = useState<PageContent | null>(null);
+  const [robotsResult, setRobotsResult] = useState<RobotsResult | null>(null);
 
   useEffect(() => {
-    const fetchPageContent = async () => {
-      const response = await chrome.runtime.sendMessage({
-        action: "getPageContent",
-      });
-      setPageContent(response);
-    };
-
-    fetchPageContent();
+    Promise.all([fetchPageContent(), fetchRobotsResult()])
+      .then(([contentResponse, robotsResponse]) => {
+        setPageContent(contentResponse);
+        setRobotsResult(robotsResponse);
+      })
+      .catch(console.error);
   }, []);
 
-  const handleGeneratePDF = () => {
-    generatePDFReport();
-  };
-
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">PDF Generator</h1>
-      <h1>Current Page</h1>
-      {pageContent ? (
-        <div>
-          <h2>{pageContent.title}</h2>
-          <p>{pageContent.url}</p>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
-        onClick={handleGeneratePDF}
-      >
-        Generate PDF
-      </button>
+    <div className="bg-gray-100 min-h-screen">
+      <div className="container mx-auto p-6">
+        <h1 className="text-3xl font-bold mb-6 text-indigo-700">
+          AI scrapping assistant
+        </h1>
+
+        <CurrentPage pageContent={pageContent} />
+        <RobotsAnalysis robotsResult={robotsResult} />
+
+        <button
+          className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
+          onClick={generatePDFReport}
+        >
+          Generate PDF
+        </button>
+      </div>
     </div>
   );
 };

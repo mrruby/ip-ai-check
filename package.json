@@ -7,7 +7,6 @@
     "build": "tsc && vite build",
     "postbuild": "node ./scripts/set-dynamic-url.cjs",
     "preview": "vite preview",
-    "mock-api": "json-server --watch mock-api/db.json --port 3001 --delay 4000",
     "test": "jest"
   },
   "devDependencies": {

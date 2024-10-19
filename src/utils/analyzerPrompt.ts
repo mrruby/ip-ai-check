@@ -14,9 +14,9 @@ Inquiries regarding AI training or text and data mining permissions can be sent 
 
 Analyze the following web page content and provide a summary of the compliance regarding the above clause. Based on your analysis, respond in **raw JSON** format with the following fields (without any additional explanation or formatting):
 
-### Use thise criteria: 
+### Evaluate the page by these criteria: 
 
-1) "copyright_reservation": Does it include any copyright reservation for all content?
+1) "copyright_reservation": It is prohibited to disclose, copy, distribute or take any other action?
 2) "opt_out_of_copyright_exception": Is there an opt-out of any copyright exception?
 3) "prohibited_type_of_use": Look for any prohibited types of use: access, use, copying, reproduction, extraction, distribution or exploitation of any of the works or content 
 4) "directive_reference": Look for prohibited purpose: text and data mining, Artificial Intelligence training, development or commercialisation of AI systems, tools or technology, web scraping, mining, altering, making extractions, automating processes, preparing derivative works or similar purposes
@@ -27,19 +27,19 @@ Analyze the following web page content and provide a summary of the compliance r
 ### JSON Format template:
 
 {{
-  "summary": "yes or no response",
   "copyright_reservation": "yes or no",
   "opt_out_of_copyright_exception": "yes or no",
   "prohibited_type_of_use": "yes or no",
   "prohibited_purpose": "yes or no",
   "directive_reference": "yes or no",
   "contact_inquiries_reference": "either include extracted email or no",
-  "security_score": 1-10,
-  "comments": "Any additional relevant comments",
-  "overall_security_assessment": "Your conclusion in one sentence"
+  "security_score": 1-10 based on fulfilled criteria,
+  "comments": "Any relevant comments to explain the selected score in one sentence.",
+  "overall_security_assessment": "Your conclusion in one sentence."
 }}
 
 Return only the JSON object with no markdown, text, or any other formatting around it.
+
 
 `;
 

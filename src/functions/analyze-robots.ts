@@ -11,36 +11,38 @@ export interface ParsedRobotsTxt {
 
 // Function to parse robots.txt and determine access rules
 export const parseRobotsTxt = (robotsTxt: string): ParsedRobotsTxt => {
-  const lines = robotsTxt
-    .split('\n')
-    .map(line => line.trim())
-    .filter(line => line && !line.startsWith('#')); // Filter out empty lines and comments
-
   const parsed: ParsedRobotsTxt = {
     rules: [],
     sitemaps: [],
   };
+  if (robotsTxt) {
+    const lines = robotsTxt
+      .split('\n')
+      .map(line => line.trim())
+      .filter(line => line && !line.startsWith('#')); // Filter out empty lines and comments
 
-  let currentUserAgent: string | null = null;
-  let currentRule: RobotsRule | null = null;
 
-  lines.forEach(line => {
-    const [directive, value] = line.split(':').map(part => part.trim());
+    let currentUserAgent: string | null = null;
+    let currentRule: RobotsRule | null = null;
 
-    if (directive.toLowerCase() === 'user-agent') {
-      if (currentRule) parsed.rules.push(currentRule);
-      currentUserAgent = value;
-      currentRule = { userAgent: currentUserAgent, disallows: [], allows: [] };
-    } else if (directive.toLowerCase() === 'disallow') {
-      if (currentRule && value) currentRule.disallows.push(value);
-    } else if (directive.toLowerCase() === 'allow') {
-      if (currentRule && value) currentRule.allows.push(value);
-    } else if (directive.toLowerCase() === 'sitemap') {
-      parsed.sitemaps.push(value);
-    }
-  });
+    lines.forEach(line => {
+      const [directive, value] = line.split(':').map(part => part.trim());
 
-  if (currentRule) parsed.rules.push(currentRule);
+      if (directive.toLowerCase() === 'user-agent') {
+        if (currentRule) parsed.rules.push(currentRule);
+        currentUserAgent = value;
+        currentRule = { userAgent: currentUserAgent, disallows: [], allows: [] };
+      } else if (directive.toLowerCase() === 'disallow') {
+        if (currentRule && value) currentRule.disallows.push(value);
+      } else if (directive.toLowerCase() === 'allow') {
+        if (currentRule && value) currentRule.allows.push(value);
+      } else if (directive.toLowerCase() === 'sitemap') {
+        parsed.sitemaps.push(value);
+      }
+    });
+
+    if (currentRule) parsed.rules.push(currentRule);
+  }
 
   return parsed;
 };

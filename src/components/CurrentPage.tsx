@@ -33,6 +33,21 @@ const CurrentPage: React.FC<CurrentPageProps> = ({ pageContent }) => {
     analyzeContent();
   }, [pageContent]);
 
+  const renderAnalysisItem = (label: string, value: string) => (
+    <li className="flex items-center">
+      <span className="font-medium mr-2">{label}</span>
+      <span
+        className={`px-2 py-1 rounded ${
+          value === "nie" || value === ""
+            ? "bg-red-200 text-red-800"
+            : "bg-green-200 text-green-800"
+        }`}
+      >
+        {value || "Brak"}
+      </span>
+    </li>
+  );
+
   return (
     <div className="bg-white rounded-lg shadow-md p-6 mb-6">
       <h2 className="text-2xl font-semibold mb-4 text-indigo-600">
@@ -46,102 +61,30 @@ const CurrentPage: React.FC<CurrentPageProps> = ({ pageContent }) => {
                 Najlepsze Praktyki Ochrony Własności Intelektualnej:
               </h3>
               <ul className="space-y-2">
-                <li className="flex items-center">
-                  <span className="font-medium mr-2">
-                    Zastrzeżenie praw autorskich:
-                  </span>
-                  <span
-                    className={`px-2 py-1 rounded ${
-                      contentAnalysis.copyright_reservation === "yes"
-                        ? "bg-green-200 text-green-800"
-                        : "bg-red-200 text-red-800"
-                    }`}
-                  >
-                    {contentAnalysis.copyright_reservation === "yes"
-                      ? "Tak"
-                      : "Nie"}
-                  </span>
-                </li>
-                <li className="flex items-center">
-                  <span className="font-medium mr-2">
-                    Wyłączenie z wyjątku praw autorskich:
-                  </span>
-                  <span
-                    className={`px-2 py-1 rounded ${
-                      contentAnalysis.opt_out_of_copyright_exception === "yes"
-                        ? "bg-green-200 text-green-800"
-                        : "bg-red-200 text-red-800"
-                    }`}
-                  >
-                    {contentAnalysis.opt_out_of_copyright_exception === "yes"
-                      ? "Tak"
-                      : "Nie"}
-                  </span>
-                </li>
-                <li className="flex items-center">
-                  <span className="font-medium mr-2">
-                    Zakaz określonego typu użycia:
-                  </span>
-                  <span
-                    className={`px-2 py-1 rounded ${
-                      contentAnalysis.prohibited_type_of_use === "yes"
-                        ? "bg-green-200 text-green-800"
-                        : "bg-red-200 text-red-800"
-                    }`}
-                  >
-                    {contentAnalysis.prohibited_type_of_use === "yes"
-                      ? "Tak"
-                      : "Nie"}
-                  </span>
-                </li>
-                <li className="flex items-center">
-                  <span className="font-medium mr-2">
-                    Zakaz określonego celu:
-                  </span>
-                  <span
-                    className={`px-2 py-1 rounded ${
-                      contentAnalysis.prohibited_purpose === "yes"
-                        ? "bg-green-200 text-green-800"
-                        : "bg-red-200 text-red-800"
-                    }`}
-                  >
-                    {contentAnalysis.prohibited_purpose === "yes"
-                      ? "Tak"
-                      : "Nie"}
-                  </span>
-                </li>
-                <li className="flex items-center">
-                  <span className="font-medium mr-2">
-                    Odniesienie do dyrektywy:
-                  </span>
-                  <span
-                    className={`px-2 py-1 rounded ${
-                      contentAnalysis.directive_reference === "yes"
-                        ? "bg-green-200 text-green-800"
-                        : "bg-red-200 text-red-800"
-                    }`}
-                  >
-                    {contentAnalysis.directive_reference === "yes"
-                      ? "Tak"
-                      : "Nie"}
-                  </span>
-                </li>
-                <li className="flex items-center">
-                  <span className="font-medium mr-2">
-                    Odniesienie do kontaktu w sprawie zapytań:
-                  </span>
-                  <span
-                    className={`px-2 py-1 rounded ${
-                      contentAnalysis.contact_inquiries_reference === "yes"
-                        ? "bg-green-200 text-green-800"
-                        : "bg-red-200 text-red-800"
-                    }`}
-                  >
-                    {contentAnalysis.contact_inquiries_reference === "yes"
-                      ? "Tak"
-                      : "Nie"}
-                  </span>
-                </li>
+                {renderAnalysisItem(
+                  "Zastrzeżenie praw autorskich:",
+                  contentAnalysis.copyright_reservation
+                )}
+                {renderAnalysisItem(
+                  "Wyłączenie z wyjątku praw autorskich:",
+                  contentAnalysis.opt_out_of_copyright_exception
+                )}
+                {renderAnalysisItem(
+                  "Zakaz określonego typu użycia:",
+                  contentAnalysis.prohibited_type_of_use
+                )}
+                {renderAnalysisItem(
+                  "Zakaz określonego celu:",
+                  contentAnalysis.prohibited_purpose
+                )}
+                {renderAnalysisItem(
+                  "Odniesienie do dyrektywy:",
+                  contentAnalysis.directive_reference
+                )}
+                {renderAnalysisItem(
+                  "Odniesienie do kontaktu w sprawie zapytań:",
+                  contentAnalysis.contact_inquiries_reference
+                )}
               </ul>
               <p className="mt-4 font-medium">
                 Ocena bezpieczeństwa:

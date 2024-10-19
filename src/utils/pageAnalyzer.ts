@@ -15,17 +15,9 @@ const prompt = ChatPromptTemplate.fromMessages([
 
 const chain = prompt.pipe(llm);
 
-
-export async function analyzePageSecurity(content: string): Promise<string> {
-  console.log("Analyzing page security...");  
-  console.log("Content:", content);
-
+export async function analyzePageContent(content: string): Promise<string> {
   const response = await chain.invoke({ content });
 
-  console.log("Analysis response:", response);
-
   const result = String(response.content);
-  console.log("Final analysis result:", result);
-
   return result;
 }

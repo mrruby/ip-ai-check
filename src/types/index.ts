@@ -1,3 +1,5 @@
+import { ParsedRobotsTxt } from "../functions/analyze-robots";
+
 export interface PageContent {
   title: string;
   url: string;
@@ -8,13 +10,6 @@ export interface PageContent {
 }
 
 export interface RobotsResult {
-  parsedRobots: {
-    rules: Array<{
-      userAgent: string;
-      disallows: string[];
-      allows: string[];
-    }>;
-    sitemaps: string[];
-  };
+  parsedRobots: ParsedRobotsTxt;
   isAllowed: boolean;
 }

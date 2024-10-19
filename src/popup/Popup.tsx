@@ -33,7 +33,8 @@ const Popup: React.FC = () => {
 
         <CurrentPage pageContent={pageContent} />
         <RobotsAnalysis robotsResult={robotsResult} />
-
+      </div>
+      <div className="container mx-auto p-6">
         <button
           className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
           onClick={generatePDFReport}

@@ -1,16 +1,21 @@
 import React from "react";
 import "./input.css";
+import { generatePDFReport } from "../helpers";
 
 const Popup: React.FC = () => {
+  const handleGeneratePDF = () => {
+    generatePDFReport();
+  };
+
   return (
-    <div className="bg-gray-100 min-h-screen p-4 w-full">
-      <h1 className="text-2xl font-bold mb-4 text-gray-800">
-        Hackathon Project
-      </h1>
-      <p className="text-gray-600 mb-2">Welcome to our Chrome Extension!</p>
-      <p className="mt-4 text-sm text-gray-500">
-        Built with ❤️ during the Hackathon
-      </p>
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">PDF Generator</h1>
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
+        onClick={handleGeneratePDF}
+      >
+        Generate PDF
+      </button>
     </div>
   );
 };

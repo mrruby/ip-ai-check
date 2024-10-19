@@ -32,7 +32,7 @@ const RobotsAnalysis: React.FC<RobotsAnalysisProps> = ({ robotsResult }) => (
           <span className="font-medium">Number of sitemaps:</span>{" "}
           {robotsResult.parsedRobots.sitemaps.length}
         </p>
-        <h3 className="font-medium text-lg mb-2 text-indigo-600">Rules:</h3>
+        {robotsResult.parsedRobots.rules.length > 0 ? <h3 className="font-medium text-lg mb-2 text-indigo-600">Rules:</h3>: null}
         <ul className="space-y-4">
           {robotsResult.parsedRobots.rules.map((rule, index) => (
             <li key={index} className="bg-gray-50 p-4 rounded-md">

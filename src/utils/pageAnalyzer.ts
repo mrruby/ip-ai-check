@@ -10,7 +10,7 @@ const llm = new ChatOpenAI({
 
 const prompt = ChatPromptTemplate.fromMessages([
   ["system", analyzerPrompt],
-  ["human", "{content}"],
+  ["human", "Analyze the following page content: {content}"],
 ]);
 
 const chain = prompt.pipe(llm);

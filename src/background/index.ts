@@ -1,7 +1,5 @@
 import { parseRobotsTxt, isBotAllowed } from "../functions/analyze-robots";
 
-console.log("background");
-
 const handleGetPageContent = (sendResponse: (response: any) => void) => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     const activeTab = tabs[0];
@@ -14,7 +12,7 @@ const handleGetPageContent = (sendResponse: (response: any) => void) => {
             console.log(chrome.runtime.lastError.message);
           } else {
             console.log(response);
-            sendResponse(response);
+            sendResponse(response);            
           }
         }
       );

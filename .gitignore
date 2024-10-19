@@ -6,6 +6,8 @@
 # Build outputs
 /dist
 /build
+.github
+dist.zip
 
 # Environment files
 .env
@@ -47,3 +49,7 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Build artifacts
+dist/
+build/

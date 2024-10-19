@@ -19,6 +19,7 @@ const Popup: React.FC = () => {
     Promise.all([fetchPageContent(), fetchRobotsResult()])
       .then(([contentResponse, robotsResponse]) => {
         setPageContent(contentResponse);
+        console.log(contentResponse);
         setRobotsResult(robotsResponse);
       })
       .catch(console.error);

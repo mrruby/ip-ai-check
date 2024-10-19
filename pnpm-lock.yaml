@@ -11,9 +11,6 @@ importers:
       '@langchain/core':
         specifier: ^0.3.13
         version: 0.3.13(openai@4.68.1(zod@3.23.8))
-      '@langchain/groq':
-        specifier: ^0.1.2
-        version: 0.1.2(@langchain/core@0.3.13(openai@4.68.1(zod@3.23.8)))
       '@langchain/openai':
         specifier: ^0.3.11
         version: 0.3.11(@langchain/core@0.3.13(openai@4.68.1(zod@3.23.8)))
@@ -530,12 +527,6 @@ packages:
   '@langchain/core@0.3.13':
     resolution: {integrity: sha512-sHDlwyHhgeaYC+wfORrWO7sXxD6/GDtZZ5mqjY48YMwB58cVv8hTs8goR/9EwXapYt8fQi2uXTGUV87bHzvdZQ==}
     engines: {node: '>=18'}
-
-  '@langchain/groq@0.1.2':
-    resolution: {integrity: sha512-bgQ9yGoNHOwG6LG2ngGvSNxF/1U1c1u3vKmFWmzecFIcBoQQOJY0jb0MrL3g1uTife0Sr3zxkWKXQg2aK/U4Sg==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      '@langchain/core': '>=0.2.21 <0.4.0'
 
   '@langchain/openai@0.3.11':
     resolution: {integrity: sha512-mEFbpJ8w8NPArsquUlCwxvZTKNkXxqwzvTEYzv6Jb7gUoBDOZtwLg6AdcngTJ+w5VFh3wxgPy0g3zb9Aw0Qbpw==}
@@ -1432,9 +1423,6 @@ packages:
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
-
-  groq-sdk@0.5.0:
-    resolution: {integrity: sha512-RVmhW7qZ+XZoy5fIuSdx/LGQJONpL8MHgZEW7dFwTdgkzStub2XQx6OKv28CHogijdwH41J+Npj/z2jBPu3vmw==}
 
   has-flag@3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
@@ -2633,10 +2621,6 @@ packages:
   walker@1.0.8:
     resolution: {integrity: sha512-ts/8E8l5b7kY0vlWLewOkDXMmPdLcVV4GmOQLyxuSswIJsweeFZtAsMF7k1Nszz+TYBQrlYRmzOnr398y1JemQ==}
 
-  web-streams-polyfill@3.3.3:
-    resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==}
-    engines: {node: '>= 8'}
-
   web-streams-polyfill@4.0.0-beta.3:
     resolution: {integrity: sha512-QW95TCTaHmsYfHDybGMwO5IJIM93I/6vTRk+daHTWFPhwh+C8Cg7j7XyKrwrj8Ib6vYXe0ocYNrmzY4xAAN6ug==}
     engines: {node: '>= 14'}
@@ -3247,16 +3231,6 @@ snapshots:
       zod-to-json-schema: 3.23.3(zod@3.23.8)
     transitivePeerDependencies:
       - openai
-
-  '@langchain/groq@0.1.2(@langchain/core@0.3.13(openai@4.68.1(zod@3.23.8)))':
-    dependencies:
-      '@langchain/core': 0.3.13(openai@4.68.1(zod@3.23.8))
-      '@langchain/openai': 0.3.11(@langchain/core@0.3.13(openai@4.68.1(zod@3.23.8)))
-      groq-sdk: 0.5.0
-      zod: 3.23.8
-      zod-to-json-schema: 3.23.3(zod@3.23.8)
-    transitivePeerDependencies:
-      - encoding
 
   '@langchain/openai@0.3.11(@langchain/core@0.3.13(openai@4.68.1(zod@3.23.8)))':
     dependencies:
@@ -4218,19 +4192,6 @@ snapshots:
       get-intrinsic: 1.2.4
 
   graceful-fs@4.2.11: {}
-
-  groq-sdk@0.5.0:
-    dependencies:
-      '@types/node': 18.19.57
-      '@types/node-fetch': 2.6.11
-      abort-controller: 3.0.0
-      agentkeepalive: 4.5.0
-      form-data-encoder: 1.7.2
-      formdata-node: 4.4.1
-      node-fetch: 2.7.0
-      web-streams-polyfill: 3.3.3
-    transitivePeerDependencies:
-      - encoding
 
   has-flag@3.0.0: {}
 
@@ -5568,8 +5529,6 @@ snapshots:
   walker@1.0.8:
     dependencies:
       makeerror: 1.0.12
-
-  web-streams-polyfill@3.3.3: {}
 
   web-streams-polyfill@4.0.0-beta.3: {}
 
